@@ -1,5 +1,4 @@
-pub mod lib;
-use lib::{run};
+use lern_wgpu::run;
 
 fn main() {
     run();
