@@ -1,11 +1,27 @@
+use wgpu::{Device, Queue, Surface, SurfaceConfiguration};
 use winit::{
     event::*,
     event_loop::{ControlFlow, EventLoop},
-    window::WindowBuilder
+    window::{WindowBuilder, Window}
 };
+use winit::dpi::PhysicalSize;
 
 #[cfg(target_arch="wasm32")]
 use wasm_bindgen::prelude::*;
+
+struct State {
+    surface: Surface,
+    device: Device,
+    queue: Queue,
+    config: SurfaceConfiguration,
+    size: PhysicalSize<u32>,
+    // The window must be declared after the surface so
+    // it gets dropped after it as the surface contains
+    // unsafe references to the window's resources.
+    window: Window
+}
+
+impl State {}
 
 #[cfg_attr(target_arch="wasm32", wasm_bindgen(start))]
 pub fn run() {
